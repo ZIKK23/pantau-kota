@@ -46,7 +46,3 @@ next-env.d.ts
 CLAUDE.md
 MAINTENANCE.md
 DESIGN.md
-.vercel
-
-prisma
-public
