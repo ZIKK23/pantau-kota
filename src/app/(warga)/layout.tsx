@@ -2,6 +2,8 @@ import { getCurrentSession } from '@/lib/auth';
 import { redirect } from 'next/navigation';
 import WargaNavbar from '@/components/layout/WargaNavbar';
 
+export const dynamic = 'force-dynamic';
+
 // Layout untuk semua halaman warga: proteksi + navbar
 export default async function WargaLayout({
   children,

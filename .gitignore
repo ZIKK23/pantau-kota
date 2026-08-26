@@ -40,3 +40,5 @@ next-env.d.ts
 # IDE
 .vscode/*
 !.vscode/extensions.json
+
+.claude
