@@ -34,12 +34,35 @@ const nextConfig = {
               "connect-src 'self' https://*.supabase.co wss://*.supabase.co https://api.cloudinary.com https://res.cloudinary.com https://*.tile.openstreetmap.org https://nominatim.openstreetmap.org https://unpkg.com https://images.unsplash.com https://fonts.googleapis.com https://fonts.gstatic.com",
               "worker-src 'self'",
               "frame-src 'none'",
+              "frame-ancestors 'self'",
+              "base-uri 'self'",
+              "form-action 'self'",
             ].join("; "),
           },
           {
             // Informasikan browser bahwa ini bukan tracker
             key: "Permissions-Policy",
             value: "camera=(), microphone=(), geolocation=(self)",
+          },
+          {
+            // Cegah situs lain meng-embed halaman ini via iframe (clickjacking)
+            key: "X-Frame-Options",
+            value: "SAMEORIGIN",
+          },
+          {
+            // Cegah browser menebak MIME type resource (mengurangi risiko drive-by download / XSS via file upload)
+            key: "X-Content-Type-Options",
+            value: "nosniff",
+          },
+          {
+            // Paksa HTTPS untuk semua request berikutnya (proteksi downgrade/SSL-stripping)
+            key: "Strict-Transport-Security",
+            value: "max-age=63072000; includeSubDomains; preload",
+          },
+          {
+            // Batasi informasi referrer yang dikirim ke origin lain
+            key: "Referrer-Policy",
+            value: "strict-origin-when-cross-origin",
           },
         ],
       },
