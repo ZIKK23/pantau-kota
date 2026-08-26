@@ -43,6 +43,10 @@ next-env.d.ts
 
 .claude
 .vercel
-.CLAUDE.md
-.MAINTENANCE.md
-.DESIGN.md
+CLAUDE.md
+MAINTENANCE.md
+DESIGN.md
+.vercel
+
+prisma
+public
