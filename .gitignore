@@ -43,3 +43,6 @@ next-env.d.ts
 
 .claude
 .vercel
+.CLAUDE.md
+.MAINTENANCE.md
+.DESIGN.md
