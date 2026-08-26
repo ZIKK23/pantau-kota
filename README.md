@@ -47,7 +47,6 @@ PantauKota is a Progressive Web App (PWA) designed for modern urban infrastructu
 | **Supabase Realtime** | WebSocket Subscriptions | Enables instant push notifications and live UI updates effortlessly. |
 | **Leaflet & React-Leaflet** | Interactive Maps | Lightweight library for mapping and geolocation data. |
 | **Cloudinary** | Image Storage & CDN | Secure image uploads with on-the-fly transformations. |
-| **Resend** | Email Service | Reliable transactional notifications for status updates. |
 
 ---
 
@@ -57,7 +56,6 @@ PantauKota is a Progressive Web App (PWA) designed for modern urban infrastructu
 - **Node.js** (v20 or higher)
 - **Supabase** Project (Database & Auth)
 - **Cloudinary** Account (Images)
-- **Resend** Account (Emails)
 
 ### Installation Steps
 
@@ -86,9 +84,6 @@ PantauKota is a Progressive Web App (PWA) designed for modern urban infrastructu
    NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME="your-cloud-name"
    CLOUDINARY_API_KEY="your-api-key"
    CLOUDINARY_API_SECRET="your-api-secret"
-   
-   # Resend
-   RESEND_API_KEY="your-resend-api-key"
    ```
 
 3. **Database Setup**:

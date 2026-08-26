@@ -2,7 +2,6 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getCurrentSession } from '@/lib/auth';
 import { prisma } from '@/lib/prisma';
 import { kirimNotifikasi } from '@/lib/notifications';
-import { kirimEmailNotifikasi } from '@/lib/email';
 import { z } from 'zod';
 
 export const dynamic = 'force-dynamic';
@@ -118,12 +117,6 @@ export async function PATCH(
         voteCount: true,
         selesaiAt: true,
         userId: true,
-        user: {
-          select: {
-            name: true,
-            email: true,
-          },
-        },
       },
     });
 
@@ -135,20 +128,7 @@ export async function PATCH(
         pesan: `Laporan "${updated.judul}" kini berstatus: ${STATUS_LABEL[updated.status]}.`,
         laporanId: updated.id,
       });
-
-      // Kirim email notifikasi (fire-and-forget, no await to keep API fast)
-      if (updated.user?.email) {
-        kirimEmailNotifikasi(
-          updated.user.email,
-          updated.user.name || 'Warga',
-          updated.judul,
-          STATUS_LABEL[updated.status],
-          updated.id
-        );
-      }
     }
-
-
 
     return NextResponse.json({
       id: updated.id,

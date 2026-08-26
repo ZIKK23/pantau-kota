@@ -32,7 +32,6 @@ process, and resolve these reports. Key features:
 | Realtime      | **Supabase Realtime** (postgres_changes on `Notifikasi` & `Laporan` tables) |
 | Images        | **Cloudinary** (upload via API, delivery via public ID transformation URLs) |
 | Maps          | **Leaflet 1.9** + **React-Leaflet 4** (client-side only)     |
-| Email         | **Resend** (email notifications to citizens on status change)   |
 | PWA           | **@serwist/next 9** (service worker, precaching)             |
 | Icons         | **Lucide React** (all UI icons)                             |
 | Charts        | **Recharts** (admin dashboard)                               |
@@ -97,7 +96,6 @@ src/
 │   ├── auth.ts                   # getCurrentUser(), getCurrentSession() — SERVER ONLY
 │   ├── cloudinary.ts             # getCloudinaryImageUrl() — public ID → delivery URL
 │   ├── constants.ts              # Centralized magic numbers
-│   ├── email.ts                  # kirimEmailNotifikasi() via Resend
 │   ├── geo.ts                    # Haversine, reverse geocoding (Nominatim)
 │   ├── map.ts                    # Leaflet config (tile URL, default center, icon init)
 │   ├── notifications.ts          # kirimNotifikasi(), kirimNotifikasiAdmin() — Prisma insert
@@ -180,12 +178,10 @@ Login → supabase.auth.signInWithPassword()
 - Priority threshold: `PRIORITY_THRESHOLD = 50` (in `src/lib/constants.ts`).
 - Reports can also be manually flagged by admins (`prioritas: true`).
 
-### 4.7 Notifications & Emails
+### 4.7 Notifications
 
 - In-app notifications are created via `kirimNotifikasi()` / `kirimNotifikasiAdmin()` in `src/lib/notifications.ts`.
   This directly INSERTs into the `Notifikasi` table via Prisma.
-- Emails are sent via **Resend** in a fire-and-forget manner (without await) in `src/lib/email.ts`.
-- Emails are sent when an admin changes a report's status.
 
 ### 4.8 PWA / Service Worker
 
@@ -273,7 +269,6 @@ See `.env.example` for the full list. Key variables:
 | `NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME`   | Cloudinary cloud name                   |
 | `CLOUDINARY_API_KEY`                  | Cloudinary API key (server only)        |
 | `CLOUDINARY_API_SECRET`               | Cloudinary API secret (server only)     |
-| `RESEND_API_KEY`                      | Resend email API key                    |
 
 ---
 

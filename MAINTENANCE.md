@@ -10,7 +10,6 @@ Panduan singkat untuk menjalankan, mengecek, dan merawat PantauKota.
 - Auth: Supabase Auth.
 - Realtime: Supabase Realtime untuk `Notifikasi`.
 - Images: Cloudinary public id + delivery transformations.
-- Email: Resend.
 - Deploy: Vercel.
 
 ## Environment
@@ -29,9 +28,6 @@ NEXT_PUBLIC_APP_URL="http://localhost:3000"
 NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME="..."
 CLOUDINARY_API_KEY="..."
 CLOUDINARY_API_SECRET="..."
-
-RESEND_API_KEY="..."
-RESEND_FROM_EMAIL="PantauKota <onboarding@resend.dev>"
 ```
 
 Catatan:
@@ -177,7 +173,6 @@ Manual smoke test:
 - Vote dan komentar.
 - Admin update status dan upload foto penyelesaian -> pastikan `fotoPenyelesaian` juga `pantaukota/...`.
 - Notifikasi muncul **otomatis tanpa refresh** (realtime).
-- Email terkirim jika Resend diset.
 - Peta tampil di mobile dan desktop.
 - Tidak ada horizontal scroll di 360px.
 - Cek browser console: tidak ada `Tracking Prevention` error atau `ERR_CONNECTION_REFUSED` untuk gambar Cloudinary.
@@ -192,7 +187,6 @@ Set env var di Vercel:
 - `SUPABASE_SERVICE_ROLE_KEY` jika seed/admin server task dibutuhkan.
 - `NEXT_PUBLIC_APP_URL`: URL production untuk link konfirmasi Supabase Auth dan email.
 - Cloudinary keys.
-- Resend keys.
 
 Build:
 
